@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<small>{{ post.created_at }}</small>
+<br>
+<i>By {{ post.user }}</i>
+<br>
+{% for tag in post.tags %}
+    <a href="/tags/{{ tag.id }}"><span class="badge badge-primary">{{ tag.name }}</span></a>
+{% endfor %}
+<br>
+<button type="button" class="btn btn-outline-primary">Cancel</button>
+<a role="button" class="btn btn-primary" href="/posts/{{ post.id }}/edit">Edit</a>
+<a role="button" class="btn btn-danger" href="/posts/{{ post.id }}/delete">Delete</a>
+
+{% endblock %}

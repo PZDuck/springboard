@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flask Feedback</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Flask Feedback</a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      {% if 'username' in session %}
+      <a class="nav-link" href="/logout">Logout</a>
+      {% else %}
+      <a class="nav-link" href="/login">Login</a>
+      {% endif %}
+    </li>
+  </ul>
+</nav>
+
+<div class="container mt-5">
+  {% for msg in get_flashed_messages() %}
+  <div class="alert alert-info">{{ msg }}</div>
+  {% endfor %}
+
+  {% block content %}
+  
+  {% endblock %}
+</div>
+
+</body>
+</html>

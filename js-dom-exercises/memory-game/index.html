@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Memory Game</title>
+</head>
+
+<body>
+  <section id="menu">
+    <div class="jumbotron jumbotron-fluid">
+  	  <div class="container">
+  	    <div class="title">
+    	  <h1 class="display-4">Memory Game</h1>
+    	  <p class="lead">Your best score: <span id="best-score">&mdash;</span><br>
+    	  Your last score: <span id="last-score">&mdash;</span></p>
+    	  <button type="button" class="btn btn-primary btn-lg play">Start Game!</button>
+    	</div>
+  	  </div>
+	</div>
+  </section>
+ 
+  <main>
+
+  	<section id="playground">
+
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/ricardo.gif' alt='ricardo' data-value="ricardo" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="ricardo" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/ricardo.gif' alt='ricardo' data-value="ricardo" />
+  	  	<img class='back' src='img/tap.png' alt='closed' data-value="ricardo" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/yoba.gif' alt='heh' data-value="yoba" />
+  	  	<img class='back' src='img/tap.png' alt='closed' data-value="yoba" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/yoba.gif' alt='yoba'  data-value="yoba" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="yoba" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/van.gif' alt='van'  data-value="van" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="lol" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/van.gif' alt='van'  data-value="van" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="lol" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/travolta.gif' alt='travolta'  data-value="travolta" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="travolta" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/travolta.gif' alt='travolta'  data-value="travolta" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="travolta" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/cena.gif' alt='cena'  data-value="cena" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="cena" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/cena.gif' alt='cena'  data-value="cena" />
+  	  	<img class='back' src='img/tap.png' alt='closed' data-value="cena" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/blink.gif' alt='blink'  data-value="blink" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="blink" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/blink.gif' alt='blink'  data-value="blink" />
+  	  	<img class='back' src='img/tap.png' alt='closed'  data-value="blink" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/hello.gif' alt='hello' data-value="hello" />
+  	  	<img class='back' src='img/tap.png' alt='closed' data-value="hello" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/hello.gif' alt='hello' data-value="hello" />
+  	  	<img class='back' src='img/tap.png' alt='closed' data-value="hello"  />
+  	  </div>
+  	  <div class="flipcard flipped" >
+  	  	<img class='front' src='img/nyan.gif' alt='nyan' data-value="nyan" />
+  	  	<img class='back' src='img/tap.png' alt='closed' data-value="nyan" />
+  	  </div>
+  	  <div class="flipcard flipped">
+  	  	<img class='front' src='img/nyan.gif' alt='nyan' data-value="nyan" />
+  	  	<img class='back' src='img/tap.png' alt='closed' data-value="nyan" />
+  	  </div>
+
+  	</section>
+
+  	<div id="modal" class="overlay">
+  	  <div class="popup">
+  		<h2>Game over!</h2>
+  	    <p class="current-score"></p>
+  		<button class="btn btn-primary play">Play again</button>
+  	  </div>
+  	</div>
+
+  </main>
+
+</body>
+
+<script type="text/javascript" src="main.js"></script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Giphy Party!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel='stylesheet' href="style.css">
+</head>
+
+<body>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class='container'>
+  <form id="search">
+    <div class="form-row align-items-center">
+      <div class="col-sm-3 my-1">
+        <label class="sr-only" for="inlineFormInputName">Name</label>
+        <input type="text" class="form-control" id="search-gif">
+      </div>
+
+      <div class="col-auto my-1">
+        <button type="submit" class="btn btn-primary submit-gif">Submit</button>
+        <button type="button" class="btn btn-danger remove-all-gifs">Remove All</button>
+      </div>
+    </div>
+  </form>
+  </div>
+
+</div>
+
+<div class='container gifs'>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>

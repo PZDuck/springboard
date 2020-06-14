@@ -1,0 +1,14 @@
+details {
+  margin: 50px 0;
+}
+
+.cupcakes-list {
+  display: flex;
+}
+
+.forms {
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    {% for i in all_surveys %}
+    <h1>{{ i[1].title }}</h1>
+        <form action="{{ url_for('start_survey', s_id=loop.index0) }}">
+            <button>Choose</button>
+        </form>
+    {% endfor %}
+
+{% endblock %}

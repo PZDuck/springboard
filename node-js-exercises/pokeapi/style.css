@@ -1,0 +1,46 @@
+body {
+    font-family: Calibri;
+    font-size: 18px;
+}
+
+#catch {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color: #000000;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+#catch:hover{
+    box-shadow: 0 0 5px rgb(87, 215, 250);
+    border: 1px solid rgba(87, 215, 250, 1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#pokemons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 3rem 0;
+}
+
+.card {
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(66, 149, 182, 0.5);
+    border: 5px solid rgb(38, 87, 156);
+    border-radius: 10px;
+    width: 15%;
+}

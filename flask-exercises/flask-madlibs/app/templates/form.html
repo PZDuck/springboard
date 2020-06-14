@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Form
+{% endblock %}
+
+{% block content %}
+
+<form action="/story">
+  <label for="place">Place: </label>
+  <input type="text" name="place">
+
+  <label for="adjective">Adjective: </label>
+  <input type="text" name="adjective">
+
+  <label for="noun">Noun: </label>
+  <input type="text" name="noun">
+
+  <label for="verb">Verb: </label>
+  <input type="text" name="verb">
+
+  <label for="plural_noun">Plural noun: </label>
+  <input type="text" name="plural_noun">
+
+  <button>Submit</button>
+</form>
+
+
+<p>Want your own story templates? <a href="/story/create">Click me!</a></p>
+{% endblock %}

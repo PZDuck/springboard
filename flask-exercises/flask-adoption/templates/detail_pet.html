@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} flashes" role="alert">
+            {{ message }}
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="container pet">
+        <h2>{{ pet.name }}</h2>
+        <img src="{{ pet.photo_url }}" width="250px" height="250px">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Age: {{ pet.age }}</li>
+            <li class="list-group-item">Species: {{ pet.species }}</li>
+            <li class="list-group-item">Notes: {{ pet.notes }}</li>
+            <li class="list-group-item">I am {% if pet.available %}available!{% else %}not available!{% endif %}</li>
+        </ul>        
+        
+        <a class="btn btn-primary" href="/{{ pet.id }}/edit-pet" role="button">Edit</button>
+    </div>
+    
+
+{% endblock %}

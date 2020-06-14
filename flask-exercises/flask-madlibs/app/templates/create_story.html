@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+puk
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+<label for="opening">Opening: </label>
+<input type="text" name="opening">
+
+<label for="following">Following: </label>
+<input type="text" name="following">
+
+<label for="ending">Ending: </label>
+<input type="text" name="ending">
+
+<button>Submit</button>
+</form>
+
+<p>Stories follow the format:<span>
+"""Opening {place}, following {adjective} {noun}. Ending {verb} {plural_noun}."""</span></p>
+{% endblock %}

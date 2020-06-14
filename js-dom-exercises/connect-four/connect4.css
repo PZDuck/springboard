@@ -1,0 +1,118 @@
+/* game board table */
+:root {
+	--rowNum: 0;
+	--colNum: 0;
+	--currRow: 0;
+	--currPlayerColor: red;
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+.hide {
+	display: none !important;
+}
+
+.jumbotron {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+.head-cover {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 100vh;
+	padding-bottom: 150px;
+}
+
+#top {
+	display: grid;
+	grid-template-columns: repeat(var(--colNum), auto);
+	justify-content: center;
+	grid-row-gap: 10px;
+	column-gap: 10px;
+}
+#game {
+	display: grid;
+	grid-template-rows: repeat(2,50%);
+	grid-template-columns: auto;
+	grid-row-gap: 10px;
+	column-gap: 10px;
+	margin-top: 50px;
+
+}
+
+#board {
+	display: grid;
+	grid-template-columns: repeat(var(--colNum), auto);
+	grid-template-rows: repeat(var(--rowNum), auto);
+	justify-content: center;
+	grid-row-gap: 10px;
+	column-gap: 10px;
+}
+
+
+
+.head-cell {
+	position: relative;
+	padding: 33px;
+	border: 2px solid #299EA4;
+}
+
+.head-inner-cell {
+	position: absolute;
+	padding: 33px;
+	border: 0;
+	left: 0;
+	top: 0;
+}
+
+.head-inner-cell:hover {
+	border-radius: 50%;
+	background-color: var(--currPlayerColor);
+	opacity: 0.7;
+}
+
+#board div {
+	position: relative;
+	padding: 33px;
+	color: red;
+	border: 2px solid #A42800;
+}
+
+.chip-1 {
+	position: absolute !important;
+	padding: 0;
+	border: 0 !important;
+	left: 0;
+	top: 0;
+	background-color: red;
+	border-radius: 50%;
+	animation: fall 0.7s cubic-bezier(.54,-0.05,.42,1.32);
+}
+
+.chip-2 {
+	position: absolute !important;
+	padding: 0;
+	border: 0 !important;
+	left: 0;
+	top: 0;
+	background-color: blue;
+	border-radius: 50%;
+	animation: fall 0.7s cubic-bezier(.54,-0.05,.42,1.32);
+}
+
+@keyframes fall {
+	0% {
+		transform: translateY(calc(0px - (var(--currRow) * 99px)));
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}

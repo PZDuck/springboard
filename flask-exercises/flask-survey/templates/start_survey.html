@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ survey[1].title }}</h1>
+    <p>
+      {{ survey[1].instructions }}
+       <form action="{{ url_for('question', s_id=s_id, q_id=0) }}">
+          <button>Start</button>
+      </form>
+    </p>
+
+{% endblock %}

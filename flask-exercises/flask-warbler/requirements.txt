@@ -1,0 +1,9 @@
+bcrypt
+Flask
+Flask-Bcrypt
+Flask-SQLAlchemy
+Flask-WTF
+psycopg2-binary
+SQLAlchemy
+Werkzeug
+WTForms

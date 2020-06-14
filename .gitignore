@@ -1,0 +1,9 @@
+.flaskenv
+.vscode
+Pipfile
+Pipfile.lock
+env/
+venv/
+__pycache__
+
+node_modules
