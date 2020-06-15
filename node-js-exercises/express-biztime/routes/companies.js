@@ -7,9 +7,9 @@ const router = new express.Router()
 
 router.get('/', async function (req, res, next) {
     try {
-        const result = await db.query(`SELECT code, name FROM companies`)
+        const company = await db.query(`SELECT code, name FROM companies`)
 
-        return res.json({"companies": result.rows})
+        return res.json({"companies": company.rows})
     } catch (e) {
         return next(e)
     }
@@ -34,11 +34,22 @@ router.post('/', async function (req, res, next) {
 
 router.get('/:code', async function (req, res, next){
     try {
-        const company = await db.query(`SELECT * FROM companies WHERE code=$1`, [res.params.code])
-    
-        if (!company.rows) throw new ExpressError(`No such company`, 404)
+        const company = await db.query(`
+            SELECT c.code, c.name, c.description, i.industry 
+            FROM companies AS c
+            LEFT OUTER JOIN companies_industries AS ci
+            ON c.code = ci.company_code
+            LEFT OUTER JOIN industries AS i
+            ON i.code = ci.industry_code
+            WHERE c.code=$1`, 
+            [req.params.code])
 
-        return res.json({"company": company.rows})
+        if (!company.rows) throw new ExpressError(`No such company`, 404)
+        
+        let { code, name, description } = company.rows[0]
+        let obj = {"code": code, "name": name, "description": description, "industries": company.rows.map(i => i.industry)}
+
+        return res.json({"company": obj})
     } catch (e) {
         return next(e)
     }
@@ -79,4 +90,5 @@ router.delete('/:code', async function(req, res, next) {
     }
 })
 
+module.exports = router;
 

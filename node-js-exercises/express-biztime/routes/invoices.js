@@ -43,7 +43,7 @@ router.get('/:id', async function (req, res, next) {
         
         if (!invoice.rows) throw new ExpressError(`No such invoice`, 404)
 
-        return res.json("invoice": invoice)
+        return res.json({"invoice": invoice})
     } catch (e) {
         return next(e)
     }

@@ -9,6 +9,7 @@ const invoicesRoutes = require('./routes/invoices')
 
 app.use('/companies', companiesRoutes)
 app.use('/invoices', invoicesRoutes)
+
 app.use(express.json());
 
 
