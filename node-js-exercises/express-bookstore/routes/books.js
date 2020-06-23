@@ -2,7 +2,7 @@ const express = require("express");
 const Book = require("../models/book");
 const jsonschema = require("jsonschema");
 const createBookSchema = require("../schemas/createBook.json")
-const udpateBookSchema = require("../schemas/updateBook.json")
+const updateBookSchema = require("../schemas/updateBook.json")
 const expressError = require("../expressError")
 
 const router = new express.Router();
@@ -12,7 +12,7 @@ const router = new express.Router();
 
 router.get("/", async function (req, res, next) {
   try {
-    const books = await Book.findAll(req.query);
+    const books = await Book.findAll();
     return res.json({ books });
   } catch (err) {
     return next(err);
@@ -34,11 +34,10 @@ router.get("/:id", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   try {
-    const data = jsonschema.validate(req.body, bookSchema)
+    const data = jsonschema.validate(req.body, createBookSchema)
     
     if (!data.valid) {
-      const errors = data.errors.map(e => e.stack)
-      return next(new expressError(errors, 400))
+      return next({ status: 400, error: data.errors.map(e => e.stack) })
     }
 
     const book = await Book.create(req.body);
@@ -55,8 +54,7 @@ router.put("/:isbn", async function (req, res, next) {
     const data = jsonschema.validate(req.body, updateBookSchema)
 
     if (!data.valid) {
-      const errors = data.errors.map(e => e.stack)
-      return next(new expressError(errors, 404))
+      return next({ status: 400, error: data.errors.map(e => e.stack) })
     }
     
     const book = await Book.update(req.params.isbn, req.body);
@@ -71,7 +69,7 @@ router.put("/:isbn", async function (req, res, next) {
 router.delete("/:isbn", async function (req, res, next) {
   try {
     await Book.remove(req.params.isbn);
-    return res.json({ message: "Book deleted" });
+    return res.json({ message: "deleted" });
   } catch (err) {
     return next(err);
   }

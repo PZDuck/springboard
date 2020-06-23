@@ -7,7 +7,6 @@
     "default": {},
     "examples": [
         {
-            "isbn": "0691161518",
             "amazon_url": "http://a.co/eobPtX2",
             "author": "Matthew Lane",
             "language": "english",
@@ -18,20 +17,16 @@
         }
     ],
     "required": [
-        "isbn"
+        "amazon_url",
+        "author",
+        "language",
+        "pages",
+        "publisher",
+        "title",
+        "year"
     ],
     "additionalProperties": true,
     "properties": {
-        "isbn": {
-            "$id": "#/properties/isbn",
-            "type": "string",
-            "title": "The isbn schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": "",
-            "examples": [
-                "0691161518"
-            ]
-        },
         "amazon_url": {
             "$id": "#/properties/amazon_url",
             "type": "string",
