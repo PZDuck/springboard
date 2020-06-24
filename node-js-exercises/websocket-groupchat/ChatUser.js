@@ -2,6 +2,7 @@
 
 // Room is an abstraction of a chat channel
 const Room = require('./Room');
+const { default: Axios } = require('axios');
 
 /** ChatUser is a individual connection from client -> server to chat. */
 
@@ -39,26 +40,90 @@ class ChatUser {
 
   /** handle a chat: broadcast to room. */
 
-  handleChat(text) {
-    this.room.broadcast({
-      name: this.name,
-      type: 'chat',
+  handleChat(text, user=null) {
+    let targetUser
+
+    this.room.members.forEach((member) => {
+      if (member.name === user) targetUser = member
+    })
+
+    if (user !== null) {
+      this.room.private(this, targetUser, {
+        source: this.name,
+        target: user,
+        type: 'private',
+        text: text
+      })
+    }
+    else {
+      this.room.broadcast({
+        name: this.name,
+        type: 'chat',
+        text: text
+      });
+    }
+  }
+
+  handleSelf(text) {
+    this.room.unicast(this, {
+      type: "note",
       text: text
-    });
+    })
+  }
+
+  /** fetch a random joke from icanhazdajokes API */
+  
+  async fetchJoke() {
+    let resp = await Axios.get(`https://icanhazdadjoke.com/`, { 'headers': { 'Accept': 'application/json'} } )
+    this.handleSelf(resp.data.joke)
+  }
+
+  /** list all members in the room */
+
+  listMembers() {
+    let members = this.room.members
+    let out = []
+
+    members.forEach((member) => out.push(member.name)) 
+    this.handleSelf(`Currently in the room: ${out.join(', ')}`)
   }
 
   /** Handle messages from client:
    *
    * - {type: "join", name: username} : join
    * - {type: "chat", text: msg }     : chat
+   * - {type: "joke"}                 : joke
+   * - {type: "members"}              : members
    */
 
-  handleMessage(jsonData) {
+  async handleMessage(jsonData) {
     let msg = JSON.parse(jsonData);
 
-    if (msg.type === 'join') this.handleJoin(msg.name);
-    else if (msg.type === 'chat') this.handleChat(msg.text);
-    else throw new Error(`bad message: ${msg.type}`);
+    switch (msg.type) {
+      case 'join':
+        this.handleJoin(msg.name);
+        break;
+      case 'chat':
+        this.handleChat(msg.text);
+        break;
+      case 'joke':
+        await this.fetchJoke();
+        break;
+      case 'members':
+        this.listMembers();
+        break;
+      case 'private':
+        this.handleChat(msg.text, msg.target)
+        break
+      default:
+        throw new Error(`bad message: ${msg.type}`);
+    }
+
+    // if (msg.type === 'join') this.handleJoin(msg.name);
+    // else if (msg.type === 'chat') this.handleChat(msg.text);
+    // else if (msg.type === 'joke') await this.fetchJoke();
+    // else if (msg.type === 'members') this.listMembers();
+    // else throw new Error(`bad message: ${msg.type}`);
   }
 
   /** Connection was closed: leave room, announce exit to others */

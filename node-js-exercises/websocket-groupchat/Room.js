@@ -51,6 +51,20 @@ class Room {
       member.send(JSON.stringify(data));
     }
   }
+
+  /** send a message from the server to a particular user */
+  
+  unicast(user, data) {
+    user.send(JSON.stringify(data))
+  }
+
+  /** send a private message to another user */
+  
+  private(source, target, data) {
+    source.send(JSON.stringify(data))
+    target.send(JSON.stringify(data))
+  }
+
 }
 
 module.exports = Room;
