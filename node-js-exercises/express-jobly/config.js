@@ -12,12 +12,12 @@ const PORT = +process.env.PORT || 3000;
 // - in testing, 'jobly-test'
 // - else: 'jobly'
 
-let DB_URI;
+let DB_URI = `postgresql://postgres:password@localhost`;
 
 if (process.env.NODE_ENV === "test") {
-  DB_URI = "jobly_test";
+  DB_URI += "/jobly_test";
 } else {
-  DB_URI = process.env.DATABASE_URL || "jobly";
+  process.env.DATABASE_URL ? DB_URI = process.env.DATABASE_URL : DB_URI += "/jobly";
 }
 
 module.exports = {
