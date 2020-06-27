@@ -1,6 +1,5 @@
 const express = require("express")
 const Company = require("../models/company")
-const db = require("../../express-bookstore/db")
 const jsonschema = require("jsonschema")
 const createCompanySchema = require("../schemas/createCompanySchema.json")
 const updateCompanySchema = require("../schemas/updateCompanySchema.json")
