@@ -1,0 +1,13 @@
+BUG - authUser decoding token ignoring signature instead of verifying it against SECRET_KEY
+
+BUG - requireLogin middleware returns error in catch block instead of ignoring it
+
+BUG - requireAdmin middleware return error in catch block instead of ignoring it
+
+BUG? - User.getAll() takes redundant username and password arguments
+
+BUG - Users router.patch uses redundant requireAdmin middleware func, thus preventing regular users from editing their info
+
+BUG - Users are able to change admin property
+
+BUG - router.post for login route in auth.js missing await keyword when invoking authenticate method
