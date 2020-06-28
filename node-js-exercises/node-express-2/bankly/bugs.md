@@ -1,4 +1,4 @@
-BUG #1 - authUser decoding token ignoring signature instead of verifying it against SECRET_KEY
+BUG #1 - authUser decodes token ignoring signature instead of verifying it against SECRET_KEY
 
 BUG #2 - requireLogin middleware returns error in catch block instead of ignoring it
 
