@@ -13,7 +13,7 @@ function requireLogin(req, res, next) {
       return next({ status: 401, message: 'Unauthorized' });
     }
   } catch (err) {
-    // Bug fix: do not return error if authentication fails
+    // Bug fix #2: do not return error if authentication fails
     return next();
   }
 }
@@ -28,7 +28,7 @@ function requireAdmin(req, res, next) {
       return next({ status: 401, message: 'Unauthorized' });
     }
   } catch (err) {
-    // Bug fix: do not return error if check fails
+    // Bug fix #3: do not return error if check fails
     return next();
   }
 }
@@ -50,9 +50,10 @@ function authUser(req, res, next) {
   try {
     const token = req.body._token || req.query._token;
     if (token) {
-      // Bug fix: verify token against SECRET_KEY instead of decoding it
+
+      // Bug fix #1: verify token against SECRET_KEY instead of decoding it
       let payload = jwt.verify(token, SECRET_KEY);
-      console.log(payload)
+      
       req.curr_username = payload.username;
       req.curr_admin = payload.admin;
     }

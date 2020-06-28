@@ -41,9 +41,9 @@ router.post('/login', async function(req, res, next) {
   try {
     const { username, password } = req.body;
     
-    // Bug fix: missing await keyword for async method
+    // Bug fix #6: missing await keyword for async method
     let user = await User.authenticate(username, password);
-    
+
     const token = createTokenForUser(username, user.admin);
     return res.json({ token });
   } catch (err) {

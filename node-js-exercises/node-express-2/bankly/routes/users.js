@@ -59,11 +59,16 @@ router.get('/:username', authUser, requireLogin, async function(req, res, next) 
  *
  */
 
-// Bug fix: requireAdmin middleware check is redundant
+// Bug fix #4: requireAdmin middleware check is redundant, fixed the if conditional statement
 router.patch('/:username', authUser, requireLogin, async function(req, res, next) {
   try {
-    if (!req.curr_admin && req.curr_username !== req.params.username) {
-      throw new ExpressError('Only  that user or admin can edit a user.', 401);
+    if (!req.curr_admin || (req.curr_username !== req.params.username)) {
+      throw new ExpressError('Only that user or admin can edit a user.', 401);
+    }
+
+    // Bug fix #5: prevent regular users from changing the admin property
+    if (!req.curr_admin) {
+      delete req.body.admin
     }
 
     // get fields to change; remove token so we don't try to change it
