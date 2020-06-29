@@ -3,7 +3,6 @@ const express = require('express')
 const User = require('../models/user')
 const expressError = require('../expressError')
 const { SECRET_KEY } = require('../config')
-const auth = require('../middleware/auth')
 
 const authRouter = new express.Router()
 
