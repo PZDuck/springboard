@@ -2,7 +2,7 @@ BUG #1 - authUser decodes token ignoring signature instead of verifying it again
 
 BUG #2 - requireLogin middleware returns error in catch block instead of ignoring it
 
-BUG #3 - requireAdmin middleware return error in catch block instead of ignoring it
+BUG #3 - requireAdmin middleware returns error in catch block instead of ignoring it
 
 BUG? - User.getAll() takes redundant username and password arguments
 

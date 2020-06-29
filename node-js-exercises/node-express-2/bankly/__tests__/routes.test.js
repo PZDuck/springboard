@@ -90,6 +90,30 @@ describe("POST /auth/login", function() {
     expect(username).toBe("u1");
     expect(admin).toBe(false);
   });
+
+  // Improved test: checks for authentication failure
+  test("should not allow a user to login with incorrect username/password", async function() {
+    let response = await request(app)
+      .post("/auth/login")
+      .send({
+        username: "nonexistent",
+        password: "pwd1"
+      });
+
+    expect(JSON.parse(response.text).message).toBe("Cannot authenticate");
+    expect(response.statusCode).toBe(401);
+    
+    response = await request(app)
+      .post("/auth/login")
+      .send({
+        username: "u1",
+        password: "incorrect"
+      });
+
+    expect(JSON.parse(response.text).message).toBe("Cannot authenticate");
+    expect(response.statusCode).toBe(401);
+
+  });
 });
 
 describe("GET /users", function() {
@@ -113,6 +137,16 @@ describe("GET /users/[username]", function() {
     expect(response.statusCode).toBe(401);
   });
 
+  // Improved test: throws an error if token is invalid
+  test("should deny access if no token provided", async function() {
+    const response = await request(app)
+      .get("/users/u1")
+      .send({ _token: "invalid" });
+
+    expect(JSON.parse(response.text).message).toBe("jwt malformed");
+    expect(response.statusCode).toBe(401);
+  });
+  
   test("should return data on u1", async function() {
     const response = await request(app)
       .get("/users/u1")
@@ -157,7 +191,7 @@ describe("PATCH /users/[username]", function() {
     });
   });
 
-  test("should disallowing patching not-allowed-fields", async function() {
+  test("should disallow patching not-allowed-fields", async function() {
     const response = await request(app)
       .patch("/users/u1")
       .send({ _token: tokens.u1, admin: true });
@@ -175,6 +209,7 @@ describe("PATCH /users/[username]", function() {
 describe("DELETE /users/[username]", function() {
   test("should deny access if no token provided", async function() {
     const response = await request(app).delete("/users/u1");
+    expect(JSON.parse(response.text).message).toBe("Unauthorized");
     expect(response.statusCode).toBe(401);
   });
 
@@ -182,6 +217,7 @@ describe("DELETE /users/[username]", function() {
     const response = await request(app)
       .delete("/users/u1")
       .send({ _token: tokens.u1 });
+    expect(JSON.parse(response.text).message).toBe("Unauthorized");
     expect(response.statusCode).toBe(401);
   });
 

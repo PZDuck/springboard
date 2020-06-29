@@ -14,7 +14,7 @@ function requireLogin(req, res, next) {
     }
   } catch (err) {
     // Bug fix #2: do not return error if authentication fails
-    return next();
+    return next(err);
   }
 }
 
@@ -53,7 +53,6 @@ function authUser(req, res, next) {
 
       // Bug fix #1: verify token against SECRET_KEY instead of decoding it
       let payload = jwt.verify(token, SECRET_KEY);
-      
       req.curr_username = payload.username;
       req.curr_admin = payload.admin;
     }
