@@ -8,7 +8,7 @@ CREATE TABLE users (
   first_name TEXT NOT NULL,
   last_name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
-  photo_url TEXT,
+  photo_url TEXT DEFAULT NULL,
   is_admin BIT DEFAULT 0
 );
 

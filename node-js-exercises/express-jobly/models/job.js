@@ -1,7 +1,6 @@
 const db = require("../db")
 const expressError = require("../helpers/expressError")
 const patch = require("../helpers/partialUpdate")
-const router = require("../routes/companies")
 
 
 class Job {
