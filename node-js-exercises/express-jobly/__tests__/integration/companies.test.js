@@ -80,8 +80,8 @@ describe("GET /companies/:handle", async () => {
       `/companies/TST?_token=${DATA.tokens.userToken}`
     );
 
-    expect(response.body.company.name).toBe("Test Inc.");
-    expect(response.body.company.jobs).toHaveLength(1);
+    expect(response.body.name).toBe("Test Inc.");
+    expect(response.body.jobs).toHaveLength(1);
   });
 
   test("should respond with 401 unauthorized (not authenticated)", async () => {
@@ -111,10 +111,10 @@ describe("PATCH /companies/:handle", async () => {
       _token: DATA.tokens.adminToken,
     });
     expect(response.statusCode).toBe(200);
-    expect(response.body.company.name).toBe("New Company");
-    expect(response.body.company.num_employees).toBe(1);
-    expect(response.body.company.description).toBe("New Desc");
-    expect(response.body.company.logo_url).toBe("https://random.org/2.jpg");
+    expect(response.body.name).toBe("New Company");
+    expect(response.body.num_employees).toBe(1);
+    expect(response.body.description).toBe("New Desc");
+    expect(response.body.logo_url).toBe("https://random.org/2.jpg");
   });
 
   test("should respond with 401 unaithorized (user)", async () => {
