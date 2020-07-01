@@ -13,7 +13,6 @@ function requireLogin(req, res, next) {
       return next({ status: 401, message: 'Unauthorized' });
     }
   } catch (err) {
-    // Bug fix #2: do not return error if authentication fails
     return next(err);
   }
 }
@@ -28,8 +27,7 @@ function requireAdmin(req, res, next) {
       return next({ status: 401, message: 'Unauthorized' });
     }
   } catch (err) {
-    // Bug fix #3: do not return error if check fails
-    return next();
+    return next(err);
   }
 }
 

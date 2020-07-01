@@ -15,16 +15,17 @@ const PORT = +process.env.PORT || 3000;
 let DB_URI = `postgresql://postgres:password@localhost`;
 const BCRYPT_WORK_FACTOR = 12;
 
-
 if (process.env.NODE_ENV === "test") {
   DB_URI += "/jobly_test";
 } else {
-  process.env.DATABASE_URL ? DB_URI = process.env.DATABASE_URL : DB_URI += "/jobly";
+  process.env.DATABASE_URL
+    ? (DB_URI = process.env.DATABASE_URL)
+    : (DB_URI += "/jobly");
 }
 
 module.exports = {
   SECRET_KEY,
   PORT,
   DB_URI,
-  BCRYPT_WORK_FACTOR
+  BCRYPT_WORK_FACTOR,
 };

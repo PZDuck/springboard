@@ -59,7 +59,7 @@ router.get('/:username', authUser, requireLogin, async function(req, res, next) 
  *
  */
 
-// Bug fix #4: requireAdmin middleware check is redundant, fixed the if conditional statement
+// Bug fix #2: requireAdmin middleware check is redundant, fixed the if conditional statement
 router.patch('/:username', authUser, requireLogin, async function(req, res, next) {
   try {
     if (!req.curr_admin && (req.curr_username !== req.params.username)) {

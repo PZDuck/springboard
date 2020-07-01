@@ -9,7 +9,7 @@ CREATE TABLE users (
   last_name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   photo_url TEXT DEFAULT NULL,
-  is_admin BIT DEFAULT 0
+  is_admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE companies (
@@ -25,12 +25,10 @@ CREATE TABLE jobs (
   title TEXT NOT NULL,
   salary FLOAT NOT NULL,
   equity FLOAT NOT NULL,
-  company_handle TEXT REFERENCES companies(handle) ON DELETE CASCADE,
+  company_handle TEXT REFERENCES companies(handle) ON DELETE CASCADE ON UPDATE CASCADE,
   date_posted DATE DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT equity CHECK (equity <= 1)
 );
-
-
 
 INSERT INTO companies (handle, name, num_employees, description, logo_url)
 VALUES 

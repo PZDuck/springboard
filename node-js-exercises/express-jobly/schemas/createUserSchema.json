@@ -12,8 +12,7 @@
             "first_name": "Test",
             "last_name": "Example",
             "email": "dummyMail@mail.com",
-            "photo_url": "https://example.com/png.jpeg",
-            "is_admin": 0
+            "photo_url": "https://example.com/png.jpeg"
         }
     ],
     "required": [
@@ -85,16 +84,6 @@
             "format": "uri",
             "examples": [
                 "https://example.com/png.jpeg"
-            ]
-        },
-        "is_admin": {
-            "$id": "#/properties/is_admin",
-            "type": "integer",
-            "title": "The is_admin schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": 0,
-            "examples": [
-                0
             ]
         }
     }

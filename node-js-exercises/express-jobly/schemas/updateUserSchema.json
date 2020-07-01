@@ -16,10 +16,6 @@
             "is_admin": 0
         }
     ],
-    "required": [
-        "username",
-        "password"
-    ],
     "additionalProperties": true,
     "properties": {
         "username": {
