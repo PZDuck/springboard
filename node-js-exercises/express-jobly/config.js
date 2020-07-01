@@ -23,6 +23,8 @@ if (process.env.NODE_ENV === "test") {
     : (DB_URI += "/jobly");
 }
 
+console.log(DB_URI);
+
 module.exports = {
   SECRET_KEY,
   PORT,
