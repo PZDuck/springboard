@@ -1,20 +1,16 @@
 const App = () => {
   return (
     <div>
-      <Person age="18" name="jeff" hobbies="skiing,shooting,shouting" />
-      <Person age="12" name="bob" hobbies="reading,fishing,killing" />
-      <Person age="24" name="jack" hobbies="creating React components" />
+      <Person age={18} name="jeff" hobbies={["dancing", "singing"]} />
+      <Person age={12} name="bob" hobbies={["eating", "beating", "stealing"]} />
+      <Person age={24} name="jack" hobbies={["creating React components"]} />
     </div>
   );
 };
 
 const Person = (props) => {
-  let vote = +props.age >= 18 ? <OverEighteen /> : <UnderEighteen />;
-  let hobbies = [];
+  let vote = props.age >= 18 ? <OverEighteen /> : <UnderEighteen />;
 
-  for (let hobby of props.hobbies.split(",")) {
-    hobbies.push(<Hobby key={hobby} hobby={hobby} />);
-  }
   return (
     <div>
       <p>Learn some information about this person</p>
@@ -22,7 +18,9 @@ const Person = (props) => {
       {vote}
       <ul>
         Hobbies
-        {hobbies}
+        {props.hobbies.map((h) => (
+          <li>{h}</li>
+        ))}
       </ul>
     </div>
   );
