@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(90deg, #d6e9e9, #f3d1d1, rgb(191, 191, 241));
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header {
+    position: relative;
+    align-self: center;
+    font-size: 32px;
+}
+
+.winner {
+    background: radial-gradient(rgba(127, 199, 127, 0.5), rgba(39, 155, 83, 0.7));
+}
+
+.loser {
+    background: radial-gradient(rgba(228, 83, 83, 0.5), rgba(167, 16, 16, 0.7))
+}

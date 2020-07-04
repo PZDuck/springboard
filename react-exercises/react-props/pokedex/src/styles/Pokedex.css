@@ -1,0 +1,10 @@
+.Pokedex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 2em 10em;
+    border: solid black;
+    border-width: 3px 3px 5px 5px;
+    border-radius: 6%;
+    padding: 50px;
+}
