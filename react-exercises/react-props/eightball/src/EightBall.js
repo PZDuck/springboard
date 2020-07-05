@@ -7,6 +7,20 @@ function EightBall() {
     const answer = answers[Math.floor(Math.random() * answers.length)];
     setAnswer(answer.msg);
     setColor(answer.color);
+
+    // #1 Attempt
+
+    // setCounter(prevState => {
+    //   prevState['question'] += 1
+    //   prevState[color] += 1
+    // })
+
+    // #2 Attempt
+    // setCounter({
+    //   ...counter,
+    //   ["questions"]: counter["questions"] + 1,
+    //   [color]: counter[color] + 1,
+    // });
   }
   function reset() {
     setAnswer("Think of a Question");
@@ -18,6 +32,8 @@ function EightBall() {
       red: 0,
     });
   }
+
+  // #3 Attempt
   function updateCounter() {
     counter["questions"] += 1;
     counter[color] += 1;
