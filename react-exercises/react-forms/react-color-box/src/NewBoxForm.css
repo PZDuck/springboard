@@ -1,0 +1,51 @@
+#NewBoxForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10vh 30vw;
+}
+
+#NewBoxForm input {
+    border: 2px solid;
+    border-image-source: linear-gradient(90deg, rgb(89, 81, 248) 2%, rgba(43, 43, 190, 1) 40%, rgba(0, 212, 255, 1) 100%);
+    border-image-slice: 1;
+    border-radius: 5px;
+    min-width: 20vw;
+    max-width: 30vw;
+    padding: 0.6em;
+    margin: 2em;
+    transition: 200ms all ease-in-out;
+}
+
+#NewBoxForm input:focus {
+    border-color: rgba(148, 172, 255, 0.3);
+    transition: 200ms all ease-in-out;
+}
+
+#NewBoxForm button {
+    background-color: #416afc;
+    color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+    padding: 0.25em 0.75em;
+    min-width: 10ch;
+    min-height: 50px;
+    text-align: center;
+    line-height: 1.1;
+}
+
+#NewBoxForm button:hover {
+    background-color: rgb(29, 69, 212);
+    transition: 220ms all ease-in-out;
+}
+
+#NewBoxForm button:focus {
+    outline-style: solid;
+    outline-color: transparent;
+    box-shadow: 0 0 0 2px rgba(147, 167, 255, 0.8);
+}
+
+#NewBoxForm button:active {
+    background-color: rgba(29, 69, 212, 0.5);
+
+}
