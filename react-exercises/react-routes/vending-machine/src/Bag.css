@@ -1,0 +1,14 @@
+.Bag {
+    position: absolute;
+    right: 150%;
+    min-width: 10em;
+    border-radius: 5px;
+    padding: 2em;
+    background: #84DCC6;
+}
+
+.Bag ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}

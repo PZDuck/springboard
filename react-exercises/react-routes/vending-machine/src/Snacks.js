@@ -1,31 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Snack.css";
 
-function Soda() {
+function Snack(props) {
   return (
-    <div className="Soda">
-      <h1>Soda</h1>
+    <div className={`Snack ${props.name}`}>
+      <h2>{props.name}</h2>
+      <ul>
+        {Object.keys(props.info).map((i) => (
+          <li key={i}>
+            {i.charAt(0).toUpperCase() + i.slice(1)} - {props.info[i]}
+          </li>
+        ))}
+      </ul>
       <Link to="/">Go back</Link>
     </div>
   );
 }
 
-function Chips() {
-  return (
-    <div className="Chips">
-      <h1>Chips</h1>
-      <Link to="/">Go back</Link>
-    </div>
-  );
-}
-
-function Sardines() {
-  return (
-    <div className="Sardines">
-      <h1>Sardines</h1>
-      <Link to="/">Go back</Link>
-    </div>
-  );
-}
-
-export { Soda, Chips, Sardines };
+export default Snack;

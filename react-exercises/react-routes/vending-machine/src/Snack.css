@@ -1,0 +1,21 @@
+.Snack {
+    position: absolute;
+    left: 150%;
+    min-width: 10em;
+    border-radius: 5px;
+    background: #84DCC6;
+    padding: 2em;
+
+}
+
+.Snack ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.Snack li {
+    padding: 5px 10px;
+    background-color: #EEEEEE;
+    border: 1px solid #DDDDDD;
+}

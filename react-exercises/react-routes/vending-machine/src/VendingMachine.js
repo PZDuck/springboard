@@ -4,42 +4,46 @@ import NumPad from "react-numpad";
 import ITEMS from "./items";
 import VendingMachineContext from "./VendingMachineContext";
 import Bag from "./Bag";
+import Shelf from "./Shelf";
+import "./VendingMachine.css";
 
 function VendingMachine() {
-  const [item, setItem] = useState("");
   const [bag, setBag] = useState({});
 
-  const selectItem = (num) => {
-    if (!(num in ITEMS)) return;
-    setItem(num);
-  };
+  const updateBag = (item) => {
+    if (!(item in ITEMS)) return;
 
-  const updateBag = () => {
     let i = bag[item];
     if (!i) {
       i = { ...bag, [item]: 1 };
     } else {
-      console.log(bag[item]);
       i = { ...bag, [item]: ++bag[item] };
-      console.log(i);
     }
     setBag(i);
   };
 
   return (
     <VendingMachineContext.Provider value={bag}>
-      <Bag />
       <div className="VendingMachine">
-        <NumPad.Number
-          onChange={(num) => selectItem(num)}
-          label="Enter the num"
-        />
-        <button onClick={() => updateBag()}>Get a snack!</button>
-        {Object.keys(ITEMS).map((i, idx) => (
-          <Route key={idx} exact path={`/${ITEMS[i].name}`}>
-            {ITEMS[i].component}
-          </Route>
-        ))}
+        <div className="inner">
+          <Shelf />
+        </div>
+        <div className="glass"></div>
+        <div className="tray"></div>
+        <div className="numpad">
+          {" "}
+          <NumPad.Number onChange={(num) => updateBag(num)} />
+        </div>
+
+        <div className="item">
+          {Object.keys(ITEMS).map((i, idx) => (
+            <Route key={idx} exact path={`/${ITEMS[i].name}`}>
+              {ITEMS[i].component}
+            </Route>
+          ))}
+        </div>
+
+        <Bag />
       </div>
     </VendingMachineContext.Provider>
   );
