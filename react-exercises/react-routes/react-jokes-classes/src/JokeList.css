@@ -5,3 +5,8 @@
   margin: 200px auto 0 auto;
   color: tomato;
 }
+
+.JokeList-getmore:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
